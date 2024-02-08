@@ -1,10 +1,11 @@
 {
   "name": "kos_auto_registration",
   "version": "1.0.0",
-  "description": "Automatically registrate lessons",
+  "description": "Automatically register for courses in KOS",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx src/app.ts"
   },
   "repository": {
     "type": "git",
