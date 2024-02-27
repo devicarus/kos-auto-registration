@@ -18,6 +18,9 @@
     "url": "https://github.com/prosteNoBody/kos_auto_registration/issues"
   },
   "homepage": "https://github.com/prosteNoBody/kos_auto_registration#readme",
+  "engines" : { 
+    "node" : ">=21.0.0 <22.0.0"
+  },
   "dependencies": {
     "dotenv": "^16.4.1",
     "log-update": "^6.0.0",
