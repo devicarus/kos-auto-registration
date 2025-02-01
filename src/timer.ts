@@ -100,5 +100,3 @@ export default class Timer {
     }
 }
 
-export { Timer };
-
