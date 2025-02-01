@@ -39,10 +39,13 @@ export default class Timer {
      * @returns The Timer instance.
      */
     public start(): Timer {
+        this.currentSeconds = 0;
+        
+        this.render();
         this.intervalObject = setInterval(() => {
-            if (this.currentSeconds <= this.totalSeconds) {
-                logUpdate(`${this.label} ${formatDuration(this.getRemaining())} ${this.renderBar()}`);
+            if (this.currentSeconds < this.totalSeconds) {
                 this.currentSeconds++;
+                this.render();
             } else {
                 this.stop()
 
@@ -56,20 +59,22 @@ export default class Timer {
         return this;
     }
 
-    private renderBar(): string {
+    private render(): void {
         const percentage: number = this.currentSeconds / this.totalSeconds;
         const barLength: number = 20;
         const progress: number = Math.floor(percentage * barLength);
         const bar: string = '█'.repeat(progress) + '░'.repeat(barLength - progress);
-        return bar;
+        
+        logUpdate(`${this.label} ${formatDuration(this.getRemaining())} ${bar}`);
     }
 
     /**
      * Stops the timer.
      */
     public stop(): void {
-        clearInterval(this.intervalObject[Symbol.toPrimitive]()); // apparently this is necessary to avoid a TS error
-        logUpdate.done()
+        clearInterval(this.intervalObject);
+        process.removeListener("SIGINT", this.stop)
+        logUpdate.clear()
     }
 
     /**
