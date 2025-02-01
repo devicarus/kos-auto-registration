@@ -51,7 +51,7 @@ export default class Timer {
             };
         }, 1000);
 
-        process.once("SIGINT", () => this.stop()); // stop the timer when the process is interrupted
+        process.once("SIGINT", this.stop); // stop the timer when the process is interrupted
 
         return this;
     }
@@ -86,9 +86,7 @@ export default class Timer {
      */
     public async waitForEnd(): Promise<void> {
         return new Promise<void>((resolve) => {
-            this.onEnd((timer) => {
-                resolve();
-            });
+            this.onEnd(() => { resolve(); });
         });
     }
 
