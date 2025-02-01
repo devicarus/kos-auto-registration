@@ -2,7 +2,6 @@
   "name": "kos_auto_registration",
   "version": "1.0.0",
   "description": "Automatically register for courses in KOS",
-  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "tsx src/app.ts"
@@ -11,8 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/prosteNoBody/kos_auto_registration.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/prosteNoBody/kos_auto_registration/issues"
