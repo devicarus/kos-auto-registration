@@ -18,16 +18,17 @@
     "url": "https://github.com/prosteNoBody/kos_auto_registration/issues"
   },
   "homepage": "https://github.com/prosteNoBody/kos_auto_registration#readme",
-  "engines" : { 
-    "node" : ">=21.0.0 <22.0.0"
+  "engines": {
+    "node": ">=22.13.1"
   },
   "dependencies": {
-    "dotenv": "^16.4.1",
-    "log-update": "^6.0.0",
-    "puppeteer": "^13.1.3",
-    "winston": "^3.11.0"
+    "dotenv": "^16.4.7",
+    "log-update": "^6.1.0",
+    "puppeteer": "^24.1.1",
+    "semver": "^7.7.0",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
-    "tsx": "^4.7.0"
+    "tsx": "^4.19.2"
   }
 }
