@@ -1,9 +1,11 @@
 import logger from "./logger";
 import Sniper from './sniper';
-import { SECONDS_BEFORE_RESTART_ON_ERROR } from "./config";
-import { Timer } from "./timer";
+import { SECONDS_BEFORE_RESTART_ON_ERROR, DEBUG, DEBUG_BROWSER } from "./config";
+import Timer from "./timer";
+import Updater from "./updater";
 import { AuthError, ServerError } from "./errors";
 import { formatDuration } from "./utils";
+import packageJson from "../package.json";
 
 const startSniper = () => {
     const sniper = new Sniper(logger);
@@ -17,7 +19,7 @@ const startSniper = () => {
         } else if (e instanceof ServerError) {
             logger.error(`${e.message} - seems like 🥥 is on fire`);
         } else {
-            logger.debug(e.message);
+            logger.debug(`${e.name}: ${e.message}`);
             logger.error('Something went wrong bud, sorry...');
         }
         
@@ -32,5 +34,21 @@ const startSniper = () => {
     });
 }
 
+const updater = new Updater(packageJson);
+
+logger.info('🎯 Welcome to KOS Sniper! 🎯');
+logger.info('In case of any problems, please open an issue on GitHub ASAP 🐛');
+logger.info(packageJson.bugs.url);
+
+const isLatest = await updater.isLatest();
+logger.info('┌────────────────────┐');
+logger.info(`│   Version: ${packageJson.version}   │`);
+if (isLatest)
+  logger.info(`│ \x1b[32mYou are up to date\x1b[0m │`)
+else
+  logger.info(`│  \x1b[31mUpdate available!\x1b[0m │`)
+logger.info('└────────────────────┘');
+
 logger.info('Spinnin up, gimme a sec... 🚀');
+logger.debug(`Running in ${DEBUG ? 'DEBUG' : 'PRODUCTION'} mode with ${DEBUG_BROWSER ? 'visible' : 'headless'} browser`);
 startSniper();
