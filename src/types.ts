@@ -1,10 +1,32 @@
+import { ElementHandle } from "puppeteer";
+
 type Ticket = {
-    element: Element,
+    element: ElementHandle<Element>,
     parallel: string,
     course: string,
-    type: string,
+    type: ParallelType,
     isSelected: boolean,
     freeSlots: number,
 }
 
-export { Ticket };
+enum ParallelTypeEnum {
+    LECTURE = 'P',
+    SEMINAR = 'C',
+    LABORATORY = 'L',
+}
+
+type ParallelType = keyof typeof ParallelTypeEnum;
+
+type PackageJson = {
+    repository: {
+        url: string;
+        type: string;
+    };
+    version: string;
+}
+
+export { 
+    Ticket, 
+    ParallelType, ParallelTypeEnum, 
+    PackageJson
+};
