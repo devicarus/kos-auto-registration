@@ -9,15 +9,16 @@ import { AuthError } from './errors'
  */
 const DEBUG: boolean = process.env.DEBUG === 'true' || false
 /**
- * DEBUG_HEADLESS is a boolean that says whether the browser should be launched in headless mode.
- * @defaultValue true
+ * DEBUG_BROWSER is a boolean that says whether the browser should launch with a visible window.
+ * @defaultValue false
  */
-const DEBUG_HEADLESS: boolean = process.env.DEBUG_HEADLESS === 'false' || true
+const DEBUG_BROWSER: boolean = process.env.DEBUG_BROWSER === 'true' || false
 
 const SECONDS_BETWEEN_CHECKS: number = parseInt(process.env.SECONDS_BETWEEN_CHECKS || '180' /* default 2 minutes */)
 const SECONDS_BEFORE_RESTART_ON_ERROR: number = parseInt(process.env.SECONDS_BEFORE_RESTART_ON_ERROR || '1200' /* default 20 minutes */)
+const SECONDS_TIMEOUT: number = parseInt(process.env.SECONDS_TIMEOUT || '30' /* default 0.5 minute */)
 
 const KOS_USERNAME = { get: (): string => process.env.KOS_USERNAME ?? (() => { throw new AuthError('KOS_USERNAME not set') })() }
 const KOS_PASSWORD = { get: (): string => process.env.KOS_PASSWORD ?? (() => { throw new AuthError('KOS_PASSWORD not set') })() }
 
-export { DEBUG, DEBUG_HEADLESS, SECONDS_BETWEEN_CHECKS, SECONDS_BEFORE_RESTART_ON_ERROR, KOS_USERNAME, KOS_PASSWORD};
+export { DEBUG, DEBUG_BROWSER, SECONDS_BETWEEN_CHECKS, SECONDS_BEFORE_RESTART_ON_ERROR, SECONDS_TIMEOUT, KOS_USERNAME, KOS_PASSWORD};
