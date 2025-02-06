@@ -32,6 +32,18 @@ export default class Spinner {
      */
     public start(): Spinner {
         this.frame = 0;
+        return this.run();
+    }
+    
+    /**
+     * Resumes the spinner.
+     * @returns The Spinner instance.
+     */
+    public resume(): Spinner {
+        return this.run();
+    }
+    
+    private run(): Spinner {
         this.render();
         this.intervalObject = setInterval(() => {
             this.frame = (this.frame + 1) % Spinner.frames.length;
