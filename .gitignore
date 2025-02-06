@@ -106,6 +106,7 @@ dist
 # Local ignores
 config/user.json
 .idea/
+.zed/
 
 # Created by Mac OS
 .DS_Store
