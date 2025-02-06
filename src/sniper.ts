@@ -79,20 +79,24 @@ export default class Sniper {
         const spinner: Spinner = new Spinner('Checking for available parallels...');
         const timer: Timer = new Timer(SECONDS_BETWEEN_CHECKS, 'Next check in...');
         
-        while (true) { // TODO: break when the wishlist is fulfilled
+        let done: boolean = false;
+        while (!done) {
             this.logger.debug('Checking for available parallels');
             
-            spinner.start();
-            await this.check().catch(e => {
-                spinner.stop();
-                if (e instanceof TimeoutError)
+            try {
+                spinner.start();
+            
+                done = !await this.check();
+            } catch (error) {
+                if (error instanceof TimeoutError)
                     throw new ServerError('Schedule check timed out');
                 else
-                    throw e;
-            });
-            spinner.stop();
+                    throw error;
+            } finally {
+                spinner.stop();
+            }
 
-            await timer.start().waitForEnd();
+            if (!done) await timer.start().waitForEnd();
         }
     }
 
