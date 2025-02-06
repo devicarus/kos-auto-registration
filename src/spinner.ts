@@ -17,7 +17,7 @@ export default class Spinner {
 
     private intervalObject: ReturnType<typeof setInterval>;
     
-    private static frames: string[] = ["⣷","⣯","⣟","⡿","⢿", "⣻","⣽","⣾"]; //["⣾","⣽","⣻","⢿","⡿","⣟","⣯","⣷"];
+    private static frames: string[] = ["⣷","⣯","⣟","⡿","⢿","⣻","⣽","⣾"];
     
     /**
      * @param label - The label to be displayed before the spinner frame.
