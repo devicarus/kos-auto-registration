@@ -11,7 +11,7 @@ const startSniper = () => {
     const sniper = new Sniper(logger);
     sniper.start().then(() => { 
         logger.info('All done, enjoy your new schedule! 🎉');
-    }).catch(e => {
+    }).catch((e: Error) => {
         if (e instanceof AuthError) {
             logger.error(e.message);
             logger.error('Exiting... 🚪');
