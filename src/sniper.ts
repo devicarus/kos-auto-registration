@@ -1,9 +1,9 @@
 import puppeteer, { Browser, ElementHandle, Page, TimeoutError } from "puppeteer";
-import { Logger } from 'winston';
 import { setTimeout } from "timers/promises";
 
 import { DEBUG_BROWSER, SECONDS_BETWEEN_CHECKS, SECONDS_TIMEOUT, KOS_USERNAME, KOS_PASSWORD } from './config';
 import { AuthError, ServerError } from "./errors";
+import Logger from './logger';
 import Timer from "./timer";
 import Spinner from "./spinner";
 import { Ticket, ParallelType, ParallelTypeEnum } from "./types";
@@ -84,6 +84,7 @@ export default class Sniper {
             this.logger.debug('Checking for available parallels');
             
             try {
+                this.logger.setSpinner(spinner);
                 spinner.start();
             
                 done = !await this.check();
@@ -94,6 +95,7 @@ export default class Sniper {
                     throw error;
             } finally {
                 spinner.stop();
+                this.logger.clearSpinner();
             }
 
             if (!done) await timer.start().waitForEnd();

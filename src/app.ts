@@ -1,4 +1,4 @@
-import logger from "./logger";
+import Logger from "./logger";
 import Sniper from './sniper';
 import { SECONDS_BEFORE_RESTART_ON_ERROR, DEBUG, DEBUG_BROWSER } from "./config";
 import Timer from "./timer";
@@ -7,7 +7,7 @@ import { AuthError, ServerError } from "./errors";
 import { formatDuration } from "./utils";
 import packageJson from "../package.json";
 
-const startSniper = () => {
+const startSniper = (logger: Logger) => {
     const sniper = new Sniper(logger);
     sniper.start().then(() => { 
         logger.info('All done, enjoy your new schedule! 🎉');
@@ -28,12 +28,13 @@ const startSniper = () => {
         const timer = new Timer(SECONDS_BEFORE_RESTART_ON_ERROR, 'Restarting in...');
         timer.start().onEnd(() => {
             logger.info('Restarting... 🔃');
-            startSniper();
+            startSniper(logger);
         });
         
     });
 }
 
+const logger = new Logger();
 const updater = new Updater(packageJson);
 
 logger.info('🎯 Welcome to KOS Sniper! 🎯');
@@ -51,4 +52,4 @@ logger.info('└────────────────────┘'
 
 logger.info('Spinnin up, gimme a sec... 🚀');
 logger.debug(`Running in ${DEBUG ? 'DEBUG' : 'PRODUCTION'} mode with ${DEBUG_BROWSER ? 'visible' : 'headless'} browser`);
-startSniper();
+startSniper(logger);
