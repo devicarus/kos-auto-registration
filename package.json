@@ -1,20 +1,20 @@
 {
-  "name": "kos_auto_registration",
+  "name": "kos-sniper",
   "version": "1.0.0",
-  "description": "Automatically register for courses in KOS",
+  "description": "Automatically sign up for parallels in KOS when a spot opens up",
   "type": "module",
   "scripts": {
     "start": "tsx src/app.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prosteNoBody/kos_auto_registration.git"
+    "url": "git+https://github.com/devicarus/kos-sniper.git"
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/prosteNoBody/kos_auto_registration/issues"
+    "url": "https://github.com/devicarus/kos-sniper/issues"
   },
-  "homepage": "https://github.com/prosteNoBody/kos_auto_registration#readme",
+  "homepage": "https://github.com/devicarus/kos-sniper#readme",
   "engines": {
     "node": ">=22.13.1"
   },
