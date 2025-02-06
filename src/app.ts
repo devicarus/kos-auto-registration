@@ -1,6 +1,6 @@
 import Logger from "./logger";
 import Sniper from './sniper';
-import { SECONDS_BEFORE_RESTART_ON_ERROR, DEBUG, DEBUG_BROWSER } from "./config";
+import { SECONDS_BEFORE_RESTART, DEBUG, DEBUG_BROWSER } from "./config";
 import Timer from "./timer";
 import Updater from "./updater";
 import { AuthError, ServerError } from "./errors";
@@ -23,9 +23,9 @@ const startSniper = (logger: Logger) => {
             logger.error('Something went wrong bud, sorry...');
         }
         
-        logger.debug(`Restarting in ${formatDuration(SECONDS_BEFORE_RESTART_ON_ERROR)}`);
+        logger.debug(`Restarting in ${formatDuration(SECONDS_BEFORE_RESTART)}`);
 
-        const timer = new Timer(SECONDS_BEFORE_RESTART_ON_ERROR, 'Restarting in...');
+        const timer = new Timer(SECONDS_BEFORE_RESTART, 'Restarting in...');
         timer.start().onEnd(() => {
             logger.info('Restarting... 🔃');
             startSniper(logger);
