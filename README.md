@@ -6,21 +6,21 @@
 
 ![Demo GIF](./demo.gif)
 
+</div>
+
 <br>
 
 <p align="center">
-<img alt="Version" src="https://img.shields.io/github/package-json/v/devicarus/kos-sniper?style=for-the-badge" />
-<a href="https://github.com/devicarus/kos-sniper/issues/new"><img src="https://img.shields.io/badge/create-issue-%23d73a49?style=for-the-badge" /></a>
-<img alt="Static Badge" src="https://img.shields.io/badge/my%20discord-.invoked-%235865F2?style=for-the-badge&logo=discord">
+    <img alt="Version" src="https://img.shields.io/github/package-json/v/devicarus/kos-sniper?style=for-the-badge" />
+    <a href="https://github.com/devicarus/kos-sniper/issues/new"><img src="https://img.shields.io/badge/create-issue-%23d73a49?style=for-the-badge" /></a>
+    <img alt="My Discord" src="https://img.shields.io/badge/my%20discord-.invoked-%235865F2?style=for-the-badge&logo=discord" />
 </p>
-
-</div>
 
 ---
 
 ## Instalation
 
-> Requires [Node.js <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" style="vertical-align: middle;height:1.2em" />](https://nodejs.org/) v22.13.1 or higher to run.
+> Requires [Node.js <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" height="14" />](https://nodejs.org/) v22.13.1 or higher to run.
 
 ```sh
 # Clone the repository
