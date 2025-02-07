@@ -33,7 +33,7 @@ cp .env.example .env
 
 ## Configuration
 
-All the configuration is done in the `.env` file, there are the following properties:
+Most of the configuration is done in the `.env` file, there are the following properties:
 
 | Property                  | Description                                                  | Default |
 | ------------------------- | ------------------------------------------------------------ | ------- |
@@ -43,6 +43,29 @@ All the configuration is done in the `.env` file, there are the following proper
 | `SECONDS_BEFORE_RESTART`  | Time before the program restarts after an error in seconds   | `1200`  |
 | `SECONDS_TIMEOUT`         | Time to wait for KOS to respond before timing out in seconds | `30`    |
 
+Which parallels you want is defined in the `wishlist.json` file like so:
+```json
+{
+  "bi-osy.21": [
+    "1P",
+    "2P",
+    "2C",
+    "3L",
+    "4C"
+  ],
+  "bi-ma1.21": [
+    "25C",
+    "29C"
+  ]
+}
+```
+
+> 💭 **Tip:**\
+> The order indicates your preference to the Sniper, topmost being the most desirable\
+> It will run until it gets a spot in the most preferred parallel, then it will stop
+>
+> *e.g. in the example above, the Sniper will try to get into `bi-osy.21` `2C` first, if it's full, it tries `4C`; even if it gets into `4C`, it will keep trying to get into `2C` until it succeeds*
+
 ## Usage
 
 ```sh
@@ -51,6 +74,7 @@ npm start # That's it, now sit back and relax!
 
 ## Known Issues
 
-> ⚠️ For obvious reasons the program is being worked on only during the schedule creation period ⚠️
+> ⚠️ **Warning:**
+> For obvious reasons the program is being worked on only during the schedule creation period
 
 - `puppeteer` sometimes throws `net::ERR_CONNECTION_TIMED_OUT` instead of the usual `TimeoutError` which results in the Sniper throwing a generic error, rather than the specific one. Doesn't affect the functionality of the app.
